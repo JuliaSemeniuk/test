@@ -1,15 +1,71 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
-import { fetchCount } from './counterAPI';
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState, AppThunk } from "../../app/store";
+import { fetchCount } from "./counterAPI";
 
 export interface CounterState {
   value: number;
-  status: 'idle' | 'loading' | 'failed';
+  status: "idle" | "loading" | "failed";
 }
 
-const initialState: CounterState = {
-  value: 0,
-  status: 'idle',
+const initialState: any = {
+  // value: 0,
+  // status: 'idle',
+  userName: "",
+  quiz: [
+    {
+      name: "R&B",
+      questionAudioUrl: "",
+      questionVideoUrl: "",
+      isFinished: true,
+      correctAnswerId: 1,
+      answers: [
+        { id: 1, text: "Track name1", isSelected: false, audioUrl: "" },
+        { id: 2, text: "Track name2", isSelected: false, audioUrl: "" },
+        { id: 3, text: "Track name3", isSelected: false, audioUrl: "" },
+        { id: 2, text: "Track name4", isSelected: false, audioUrl: "" },
+      ],
+    },
+    {
+      name: "Techno",
+      questionAudioUrl: "",
+      questionVideoUrl: "",
+      isFinished: false,
+      correctAnswerId: 2,
+      answers: [
+        { id: 1, text: "Track name1", isSelected: false, audioUrl: "" },
+        { id: 2, text: "Track name2", isSelected: false, audioUrl: "" },
+        { id: 3, text: "Track name3", isSelected: false, audioUrl: "" },
+        { id: 2, text: "Track name4", isSelected: false, audioUrl: "" },
+      ],
+    },
+    {
+      name: "Soul",
+      questionAudioUrl: "",
+      questionVideoUrl: "",
+      isFinished: false,
+      correctAnswerId: 3,
+      answers: [
+        { id: 1, text: "Track name1", isSelected: false, audioUrl: "" },
+        { id: 2, text: "Track name2", isSelected: false, audioUrl: "" },
+        { id: 3, text: "Track name3", isSelected: false, audioUrl: "" },
+        { id: 2, text: "Track name4", isSelected: false, audioUrl: "" },
+      ],
+    },
+    {
+      name: "Jazz",
+      questionAudioUrl: "",
+      questionVideoUrl: "",
+      isFinished: false,
+      correctAnswerId: 4,
+      answers: [
+        { id: 1, text: "Track name1", isSelected: false, audioUrl: "" },
+        { id: 2, text: "Track name2", isSelected: false, audioUrl: "" },
+        { id: 3, text: "Track name3", isSelected: false, audioUrl: "" },
+        { id: 2, text: "Track name4", isSelected: false, audioUrl: "" },
+      ],
+    },
+  ],
+  count: 0,
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -18,7 +74,7 @@ const initialState: CounterState = {
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
 export const incrementAsync = createAsyncThunk(
-  'counter/fetchCount',
+  "counter/fetchCount",
   async (amount: number) => {
     const response = await fetchCount(amount);
     // The value we return becomes the `fulfilled` action payload
@@ -27,7 +83,7 @@ export const incrementAsync = createAsyncThunk(
 );
 
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: "counter",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
@@ -51,14 +107,14 @@ export const counterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(incrementAsync.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
       })
       .addCase(incrementAsync.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.status = "idle";
         state.value += action.payload;
       })
       .addCase(incrementAsync.rejected, (state) => {
-        state.status = 'failed';
+        state.status = "failed";
       });
   },
 });
