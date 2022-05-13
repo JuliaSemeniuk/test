@@ -1,9 +1,10 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import quizReducer from "../features/quiz/quizSlice";
 
+//create a global store with Reducer func
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    quizData: quizReducer,
   },
 });
 

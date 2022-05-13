@@ -40,7 +40,7 @@ shazam.getTopTracksList().then((body) => {
 //top tracks titles, URLs, images
 const results = shazam.getTopTracksList().then((body) => {
   body.tracks.map((track: any) => {
-    console.log(track.title, track.url, track.images.coverart);
+    // console.log(track.title, track.url, track.images.coverart);
   });
 
   return body.tracks;
