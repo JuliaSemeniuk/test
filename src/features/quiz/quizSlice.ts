@@ -36,7 +36,7 @@ const initialState: QuizState = {
         { id: 1, text: "Track name1", isSelected: false, audioUrl: "" },
         { id: 2, text: "Track name2", isSelected: false, audioUrl: "" },
         { id: 3, text: "Track name3", isSelected: false, audioUrl: "" },
-        { id: 2, text: "Track name4", isSelected: false, audioUrl: "" },
+        { id: 4, text: "Track name4", isSelected: false, audioUrl: "" },
       ],
     },
     {
@@ -82,11 +82,6 @@ const initialState: QuizState = {
   count: 0,
 };
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched. Thunks are
-// typically used to make async requests.
 export const incrementAsync = createAsyncThunk(
   "quiz/fetchCount",
   async (amount: number) => {

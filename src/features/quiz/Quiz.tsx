@@ -1,21 +1,24 @@
+import Question from "components/question/question";
 import React from "react";
 
 import { useAppSelector } from "../../app/hooks";
 
-import QuizAudio from "components/quiz/quiz-audio/quiz-audio";
-import QuizHeader from "components/quiz/quiz-header/quiz-header";
-import QuizVideo from "components/quiz/quiz-video/quiz-video";
-import QuizFooter from "components/quiz/quiz-footer/quiz-footer";
+import { QuizItem } from "./quizSlice";
 
-const Quiz = () => {
-  const quiz = useAppSelector((state) => state.quizData.quiz);
-  console.log("quiz", quiz);
+const currentQuiz = (quizesArr: QuizItem[]) => {
+  const filteredQuizes = quizesArr.filter((quiz) => quiz.isFinished === false);
+  return filteredQuizes[0];
+};
+
+const Quiz: React.FC = () => {
+  const quizes = useAppSelector((state) => state.quizData.quiz);
+  console.log("quiz", quizes);
+
+  const quiz = currentQuiz(quizes);
+
   return (
     <div>
-      <QuizHeader />
-      <QuizAudio />
-      <QuizVideo />
-      <QuizFooter />
+      <Question />
     </div>
   );
 };
