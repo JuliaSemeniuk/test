@@ -1,4 +1,15 @@
-const Option = () => {
+interface Props {
+  id: string;
+  audio: string;
+  songTitle: string;
+  description: string;
+  image: string;
+  name: string;
+
+  isSelected: boolean;
+}
+
+const Option: React.FC<Props> = ({ songTitle }) => {
   return (
     <div className="form-check">
       <input
@@ -8,7 +19,7 @@ const Option = () => {
         id="flexRadioDefault1"
       />
       <label className="form-check-label" htmlFor="flexRadioDefault1">
-        Default radio
+        {songTitle}
       </label>
     </div>
   );

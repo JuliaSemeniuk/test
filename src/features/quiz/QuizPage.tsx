@@ -12,13 +12,13 @@ const currentQuiz = (quizesArr: QuizItem[]) => {
 
 const Quiz: React.FC = () => {
   const quizes = useAppSelector((state) => state.quizData.quiz);
-  console.log("quiz", quizes);
 
   const quiz = currentQuiz(quizes);
+  console.log("quiz", quiz);
 
   return (
     <div>
-      <Question />
+      <Question quiz={quiz} />
     </div>
   );
 };

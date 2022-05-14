@@ -2,8 +2,13 @@ import Option from "components/option/option";
 import ReactPlayer from "react-player";
 import ReactAudioPlayer from "react-audio-player";
 import Button from "components/shared/button/button";
+import { QuizItem } from "features/quiz/quizSlice";
 
-const Question = () => {
+interface Props {
+  quiz: QuizItem;
+}
+
+const Question: React.FC<Props> = ({ quiz }) => {
   return (
     <div className="question-container">
       <div className="question-header">
@@ -12,16 +17,15 @@ const Question = () => {
       </div>
       <div className="question-player">
         <ReactAudioPlayer
-          src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/ce/d6/58/ced65843-c1d9-5592-08dd-acb86fdb93ac/mzaf_17338138310136790226.plus.aac.ep.m4a"
+          src={quiz.questionAudioUrl}
           autoPlay={false}
           controls
         />
       </div>
       <form className="question-form">
-        <Option />
-        <Option />
-        <Option />
-        <Option />
+        {quiz.data.map((answer) => {
+          return <Option key={answer.id} {...answer} />;
+        })}
       </form>
       <div className="answer-container">
         <div className="answer-title">{/* data from redux */}</div>

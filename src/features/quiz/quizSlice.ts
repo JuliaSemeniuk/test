@@ -3,19 +3,25 @@ import { RootState, AppThunk } from "../../app/store";
 import { fetchCount } from "./quizAPI";
 
 export interface AnswerItem {
-  id: number;
-  text: string;
+  id: string;
+  audio: string;
+  songTitle: string;
+  description: string;
+  image: string;
+  name: string;
+
   isSelected: boolean;
-  audioUrl: string;
 }
 
 export interface QuizItem {
-  name: string;
+  data: AnswerItem[];
+  genre: string;
+  id: string;
+
   questionAudioUrl: string;
-  questionVideoUrl: string;
   isFinished: boolean;
-  correctAnswerId: number;
-  answers: AnswerItem[];
+  isCorrectAnswerSelected: boolean;
+  correctAnswerId: string;
 }
 export interface QuizState {
   userName: string;
@@ -27,55 +33,49 @@ const initialState: QuizState = {
   userName: "",
   quiz: [
     {
-      name: "R&B",
+      genre: "R&B",
+      id: "1",
       questionAudioUrl: "",
-      questionVideoUrl: "",
-      isFinished: true,
-      correctAnswerId: 1,
-      answers: [
-        { id: 1, text: "Track name1", isSelected: false, audioUrl: "" },
-        { id: 2, text: "Track name2", isSelected: false, audioUrl: "" },
-        { id: 3, text: "Track name3", isSelected: false, audioUrl: "" },
-        { id: 4, text: "Track name4", isSelected: false, audioUrl: "" },
-      ],
-    },
-    {
-      name: "Techno",
-      questionAudioUrl: "",
-      questionVideoUrl: "",
       isFinished: false,
-      correctAnswerId: 2,
-      answers: [
-        { id: 1, text: "Track name1", isSelected: false, audioUrl: "" },
-        { id: 2, text: "Track name2", isSelected: false, audioUrl: "" },
-        { id: 3, text: "Track name3", isSelected: false, audioUrl: "" },
-        { id: 2, text: "Track name4", isSelected: false, audioUrl: "" },
-      ],
-    },
-    {
-      name: "Soul",
-      questionAudioUrl: "",
-      questionVideoUrl: "",
-      isFinished: false,
-      correctAnswerId: 3,
-      answers: [
-        { id: 1, text: "Track name1", isSelected: false, audioUrl: "" },
-        { id: 2, text: "Track name2", isSelected: false, audioUrl: "" },
-        { id: 3, text: "Track name3", isSelected: false, audioUrl: "" },
-        { id: 2, text: "Track name4", isSelected: false, audioUrl: "" },
-      ],
-    },
-    {
-      name: "Jazz",
-      questionAudioUrl: "",
-      questionVideoUrl: "",
-      isFinished: false,
-      correctAnswerId: 4,
-      answers: [
-        { id: 1, text: "Track name1", isSelected: false, audioUrl: "" },
-        { id: 2, text: "Track name2", isSelected: false, audioUrl: "" },
-        { id: 3, text: "Track name3", isSelected: false, audioUrl: "" },
-        { id: 2, text: "Track name4", isSelected: false, audioUrl: "" },
+      isCorrectAnswerSelected: false,
+      correctAnswerId: "1",
+      data: [
+        {
+          id: "1-1",
+          songTitle: "Track name1",
+          isSelected: false,
+          audio: "",
+          description: "",
+          image: "",
+          name: "",
+        },
+        {
+          id: "1-2",
+          songTitle: "Track name2",
+          isSelected: false,
+          audio: "",
+          description: "",
+          image: "",
+          name: "",
+        },
+        {
+          id: "1-3",
+          songTitle: "Track name3",
+          isSelected: false,
+          audio: "",
+          description: "",
+          image: "",
+          name: "",
+        },
+        {
+          id: "1-4",
+          songTitle: "Track name4",
+          isSelected: false,
+          audio: "",
+          description: "",
+          image: "",
+          name: "",
+        },
       ],
     },
   ],
