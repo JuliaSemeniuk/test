@@ -9,6 +9,10 @@ interface Props {
 }
 
 const Question: React.FC<Props> = ({ quiz }) => {
+  const correctAnswer = quiz.data.filter(
+    (currentAnswer) => currentAnswer.id === quiz.correctAnswerId
+  )[0];
+
   return (
     <div className="question-container">
       <div className="question-header">
@@ -24,18 +28,25 @@ const Question: React.FC<Props> = ({ quiz }) => {
       </div>
       <form className="question-form">
         {quiz.data.map((answer) => {
-          return <Option key={answer.id} {...answer} />;
+          return (
+            <Option
+              key={answer.id}
+              {...answer}
+              correctAnswerId={quiz.correctAnswerId}
+              isCorrectSelected={correctAnswer.isAnswered}
+            />
+          );
         })}
       </form>
-      <div className="answer-container">
-        <div className="answer-title">{/* data from redux */}</div>
+      {/* <div className="answer-container">
+        <div className="answer-title"></div>
         <div className="answer-video">
           <ReactPlayer url="https://www.youtube.com/watch?v=KwIC6B_dvW4&ab_channel=JohnColtrane" />
         </div>
         <div className="answer-description"></div>
-      </div>
+      </div> */}
       <div className="footer">
-        <Button />
+        <Button isCorrectAnswerSelected={correctAnswer.isAnswered} />
       </div>
     </div>
   );

@@ -18,9 +18,7 @@ const Welcome = () => {
           aria-describedby="basic-addon2"
         />
       </div>
-      <div>
-        <Button />
-      </div>
+      <div>{/* <Button /> */}</div>
     </div>
   );
 };

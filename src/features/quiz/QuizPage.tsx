@@ -1,7 +1,7 @@
 import Question from "components/question/question";
 import React from "react";
 
-import { useAppSelector } from "../../app/hooks";
+import { useAppSelector } from "app/hooks";
 
 import { QuizItem } from "./quizSlice";
 
@@ -15,6 +15,10 @@ const Quiz: React.FC = () => {
 
   const quiz = currentQuiz(quizes);
   console.log("quiz", quiz);
+
+  if (!quiz) {
+    return null;
+  }
 
   return (
     <div>

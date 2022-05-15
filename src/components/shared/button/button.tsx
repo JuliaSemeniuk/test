@@ -1,7 +1,12 @@
 import React from "react";
 import Arrow from "../arrow/arrow";
 
-const Button = () => {
+interface Props {
+  isCorrectAnswerSelected: boolean;
+}
+
+const Button: React.FC<Props> = (props) => {
+  const { isCorrectAnswerSelected } = props;
   return (
     <div>
       {/* <button type="button" className="btn btn-primary" data-bs-toggle="button">
@@ -18,10 +23,10 @@ const Button = () => {
       <button
         type="button"
         className="btn btn-primary"
-        disabled
+        disabled={!isCorrectAnswerSelected}
         data-bs-toggle="button"
       >
-        Disabled
+        Next
         {<Arrow />}
       </button>
     </div>

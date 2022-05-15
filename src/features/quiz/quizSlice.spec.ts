@@ -1,9 +1,8 @@
-import counterReducer, {
-  //CounterState,
-  increment,
-  decrement,
-  incrementByAmount,
-} from "./quizSlice";
+import counterReducer from //CounterState,
+// increment,
+// decrement,
+// incrementByAmount,
+"./quizSlice";
 
 describe("counter reducer", () => {
   // const initialState: CounterState = {

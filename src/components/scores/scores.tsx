@@ -15,9 +15,7 @@ const Scores = () => {
               You got 13 out of 20 points. You are definitely a music lover!
             </p>
           </div>
-          <div>
-            <Button />
-          </div>
+          <div>{/* <Button /> */}</div>
         </div>
       </div>
     </div>
